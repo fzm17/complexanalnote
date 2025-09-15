@@ -80,6 +80,43 @@ Thm3 (uniqueness)\\
 \end{enumerate}
 則$f(z) \equiv 0$ (identical zero)  ($\{c_{n}\}=0$對所有$n$)\\
 *推廣：到任何常數 $c$ 也可以 ($g(z)=f(z)+c$)\\
+***他告訴了我們 如果兩個analytic function 在一個accumulated point 相等，則兩個function相等\\
+
+Thm3.1: uniqueness of analytic function\\
+如果兩個analytic function在一個收斂數列處處相等，則兩個function相等。\\
+
+
+\section{Accumulated point}
+A point $z_0$ is called an accumulated point of a set $E$ if every neighborhood of $z_0$ contains at least one point of $E$ different from $z_0$ itself.\\
+(可透過收縮open set 找到一串收斂數列 即$\{d_n\}$ ,$d_{n+1}$ 在半徑為$d(d_{n},z_0)$的openball裡面找)
+
+\section{M-L formula}
+if $f(z)$ is continuous on a curve $\gamma$ with length $L$, and if $|f(z)| \leq M$ on $\gamma$, then
+\begin{align*}
+    |\int_{\gamma} f(z) dz| \leq ML
+\end{align*}
+
+\section{analytic function}
+幾個analytic function的性質
+\begin{enumerate}
+    \item $f(z)$ is analytic at $z_0$ if and only if $f(z)$ can be represented by a convergent power series in some neighborhood of $z_0$.
+    \item 如果$f(z)$在一個區域$z_0$內解析，則$f(z)$在$z_0$內無限可微。(power series微分後收斂半徑不變，且無限可微)
+\end{enumerate}
+所以解析函數 == 無限可微函數 = power series (複數空間的微分超強特性)
+
+\section{}
+
+% \section{Cauchy-Goursat theorem}
+% if $f(z)$ is analytic on and inside a simple closed curve $\gamma$, then
+% \begin{align*}
+%     \int_{\gamma} f(z) dz = 0 \\
+% \end{align*}
+% \section{Cauchy integral formula}
+% if $f(z)$ is analytic inside and on a simple closed curve $\gamma$, and if
+% $z_0$ is any point inside $\gamma$, then
+% \begin{align*}
+%     f(z_0) = \frac{1}{2\pi i} \int_{\gamma} \frac{f(z)}{z-z_0} dz \\    
+% \end{align*}
 
 
 \end{document}
