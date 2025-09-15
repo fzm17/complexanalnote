@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{xeCJK}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\setCJKmainfont{標楷體}
+
+\title{Complex Analysis}
+\author{107021211鄭竣元}
+\date{June 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Cauchy-Riemann equation}
+A function $f(z)=u(x,y)+iv(x,y)$ , $z=x+iy$ is complex differentiable at $z_0=x_0+iy_0$ if and only if $u$ and $v$ are real differentiable at $(x_0,y_0)$.\\
+也就是說$u_{x}=v_{y}$且$u_{y}=-v_{x}$ 等價於 $f(z)$ 在 $z_0$ 可微分。
+\section{Entire}
+
+$f(x)$ is called entire if it is differentiable in all $\mathbb{C}$ fields.\\
+\\
+differentiable 是對點($z_0$)，analytic 是對區域 (open set)，entire 是對整個 $\mathbb{C}$\\
+\\
+\\
+Ex1. show $e^{z}$ is entire.
+\\
+\begin{align*} 
+e^{z} &=  e^{x+iy} \\ 
+&=  e^{x}(\cos{y}+i\sin{y})\\
+&= e^{x}\cos{y} + ie^{x}\sin{y}\\
+\end{align*}
+check by Cauchy-Riemann equation $u_{x}=v_{y}$ and $u_{y}=-v_{x}$ is hold on all $\mathbb{R}$ fields.
+thus $e^{z}$ is entire.\\
+\\
+Ex2. show $e^{z}$ is only entire function satisfied
+\begin{align*} 
+f(z_{1})+f(z_{2}) &=  f(z_{1})f(z_{2}) \\ 
+f(x)&=  e^{x}, x\in \mathbb{R} \\
+\end{align*}
+let $f(z)=g(x,y)+ih(x,y)$\\
+
+\begin{flushleft}
+$\because f(z)$ is entire, $f'(0) =e^{0} = 1$\\
+$\therefore  g'(0)+ih'(0) = 1$\\
+then $g'(0) = 1, h'(0) = 0$\\
+\end{flushleft}
+
+thus $g(x,y)=x, h(x,y)=0$\\
+
+反向用Cauchy-Riemann equation，得到:\\
+
+\begin{align*}
+g_{x} &= h_{y} \\
+g_{y} &= -h_{x} \\
+\end{align*}
+we get
+\begin{align*}
+    f''(x) + f(x) &= 0 \\
+\end{align*}
+所以$f(x) = c_1sin(x) + c_2cos(x)$，(微分兩次等於自己相反也只有sin,cos的產物)\\
+帶入$f'(0) = 1$，得到$c_1 = 1, c_2 = i\longrightarrow f(z) = e^{z}$\\
+
+\section{Convergence of complex series}
+Thm1\\
+$\sum a_{n} z^{n}=A(z)$ is Convergence at radius $R_{1}$\\
+$\sum b_{n} z^{n}=B(z)$ is Convergence at radius $R_{2}$\\
+$\Rightarrow \sum_{n=0}^{\infty} (\sum_{k=0}^{n} a_{n}\cdot b_{n-k}) z^{n} =A(z) \cdot B(z)$ is Convergence at radius $min(R_{1},R_{2})$\\
+proof: 爆破 斜線排在一起 \\
+
+Thm2\\
+power series 微分後收斂半徑不變，且無限可微\\
+hint: 展開 微分 用原本的$R$作 Convergence test\\
+
+Thm3 (uniqueness)\\
+當$f(z)=\sum_{n=0}^{\infty} c_{n} z^{n}$滿足
+\begin{enumerate}
+    \item 存在非0數列$\{z_{n}\}$,且 $lim_{n \to \infty} z_{n} = 0$\\
+    \item 對於所有$z_{n}$, $f(z_{n}) = 0$\\
+\end{enumerate}
+則$f(z) \equiv 0$ (identical zero)  ($\{c_{n}\}=0$對所有$n$)\\
+*推廣：到任何常數 $c$ 也可以 ($g(z)=f(z)+c$)\\
+
+
+\end{document}
