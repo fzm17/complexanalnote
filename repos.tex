@@ -134,30 +134,163 @@ then
 \end{flushleft}
 
 
-\section{liouville's theorem}
-如果$f(z)$在整個複數平面上解析且有界，則$f(z)$為常數函數。\\
+\section{Liouville's theorem}
+如果$f(z)$entire且有界，則$f(z)$為常數函數。\\
 *entire + bounded $\Rightarrow$ 常數函數\\
 proof:\\
-假設$|f(z)| \leq M$，則對任意$z_0 \in \mathbb{C}$, $f(z)$在$z_0$的power series展開為
+假設$|f(z)| \leq M$，我們要證明對於任意$a,b \in \mathbb{C}$, $f(a) = f(b)$\\
+其中引用 Cauchy integral formula 可得\\
 \begin{align*}
-    f(z) = \sum_{n=0}^{\infty} c_{n}(z-z_0)^{n} \\  
+    f(a)-f(b)&= \frac{1}{2\pi i} \int_{C} \frac{f(z)}{(z-a)} dz - \frac{1}{2\pi i} \int_{C} \frac{f(z)}{(z-b)} dz\\
+    &= \frac{1}{2\pi i} \int_{C}\frac{f(z)(b-a)}{(z-a)(z-b)} dz \\
 \end{align*}
-其中
+又因為$f(z)<M$ , $R=|z|>|a|,|b|$ R我們可以挑的任意大\\
 \begin{align*}
-    c_{n} = \frac{f^{(n)}(z_0)}{n!} = \frac{1}{2\pi i} \int_{|z-z_0|=r} \frac{f(z)}{(z-z_0)^{n+1}} dz \\
+    \frac{1}{2\pi i} \int_{C}\frac{f(z)(b-a)}{(z-a)(z-b)} dz < \frac{1}{2\pi i} \frac{M(b-a)}{R^{2}} \cdot 2\pi R = \frac{ M(b-a)}{R} \\
 \end{align*}
-由M-L公式可知
+所以當R挑的足夠大，M也是個常數下\\
 \begin{align*}
-    |c_{n}| \leq \frac{M}{r^{n}} \\
+    f(a)-f(b) < \frac{M(b-a)}{R} = 0 \\
 \end{align*}
-因為$r$可任意大，所以$c_{n} = 0$對所有$n \geq 1$，所以$f(z) = c_0$為常數函數。\\
+因此 $f(z)$ 為常數函數\\
 
-% \section{Cauchy-Goursat theorem}
-% if $f(z)$ is analytic on and inside a simple closed curve $\gamma$, then
-% \begin{align*}
-%     \int_{\gamma} f(z) dz = 0 \\
-% \end{align*}
+Ex1.\\
+show that is no nonconstant entire function can satisfied 
+\begin{itemize}
+    \item $f(z+1) = f(z)$
+    \item $f(z+i) = f(z)$
+\end{itemize}
+for all $z \in \mathbb{C}$\\
+proof:\\
+用 liouville's theorem\\
+Assume $f(z)$ is a  nonconstant entire function\\
+then $\forall z \in \mathbb{C}$, $\exists \zeta = x - \left\lfloor x \right\rfloor + i\left( y - \left\lfloor y \right\rfloor \right)$, where $z = x + iy$\\
 
+we pick a set $S = \{x+iy | 0 \leq |x| \leq 1, 0 \leq |y| \leq 1\}$ , ($\zeta \in S$)\\
+as we konwn $f(z)$ is continuous on $S$ and $S$ is closed and bounded on $\mathbb{R}^2$, by heine-borel $f(z)$ is compact \\
+(沒想到吧，是我 高微 closed + bdd == compact)\\
+since $f(S)$ is bounded , $f(z)$ is entire\\
+by liouville's theorem, $f(z)$ is constant function ($\rightarrow \leftarrow $)\\
 
+Thus there is no nonconstant entire function can satisfied the above two conditions.\\
+
+\section{Maximum modulus theorem}
+if $f(z)$ is analytic and nonconstant in a region $D$, 且無local maximum內點\\
+
+他還有一個孿生姊妹 thm : minimum modulus theorem\\
+證明方法就 前面的 cauchy integral formula 所帶出的的 $f(z)$ 會是那個小環的平均值(Cauchy Mean-value thm)。
+你不是平面 那你就會一邊高一邊低的感覺\\
+也就是說 analytic nonconstantfunction 在bdd區域內不會有local max or min == 極值都在邊邊上\\
+
+\section{Automorphism of unit disk}
+    後面常用到的 automorphism of unit disk\\
+    $$B_a(z) = \frac{z-a}{1-\overline{a}z}, |a|<1$$\\
+
+\section{Schwarz lemma}
+if $f(z)$ is analytic in the unit disk ($|z|<1$) and satisfies $f(0)=0$ and $|f|<1$, then\\
+\begin{enumerate}
+    \item $|f(z)| \leq |z|$ for all $z$ in the unit disk.
+    \item $|f'(0)| \leq 1$
+    \item 只要(1.) or (2.) 的等號成立 then iff $f(z) = e^{i\theta} z$.(即換角function)\\
+\end{enumerate}
+
+proof:\\
+用 Maximum modulus theorem\\
+let 
+
+$$g(z) =
+\begin{cases}
+     \frac{f(z)}{z}, 0<|z|<1\\
+     f'(0) = g(0)\\
+\end{cases}
+$$
+then $g(z)$ is analytic(課本6.7) in the unit disk.\\
+且 $|g(z)| \leq \frac{1}{r}$ 把$r$限制在unit disk 內 即 $r = 1$\\
+by Maximum modulus theorem, $|g(z)|$ has no local maximum in the unit disk
+thus $|g(z)| \leq 1$ for all $z$ in the unit disk.\\
+hence $|f(z)| \leq |z|$ for all $z$ in the unit disk.\\
+白話： 我們不是造出 g(z) 嗎？ 我們來想一下他在邊邊的最大值 也就是($r=1$ $f(z) \leq 1$)\\
+是不是就小於1 ，又因為他沒有local maximum，所以他在邊邊的值的最大值 一定大於其他內點\\
+也就是整個region都小於1\\
+講一下等號 ， $f'(0) = 1$ or $f(z) = |z|$等價於 $g(z)$ 是 constant\\
+
+Ex1.\\
+找出對unit disk fixed point $\alpha$來說，$max_f|f'(\alpha)|$\\
+最大的alanlytic function f\\
+
+proof:\\
+let 
+
+$$h(z) =
+\begin{cases}
+     \frac{f(z)-f(\alpha)}{z-\alpha} \cdot \frac{1-z\overline{\alpha}}{1-f(z)\overline{f(\alpha)}} , z \neq \alpha\\
+     f'(\alpha) \cdot \frac{1-|\alpha|^2}{1-f(\alpha)}|^2 , z=\alpha\\
+\end{cases}
+$$
+
+then $h(z)$ is analytic in the unit disk and $|h(z)| \leq 1$\\
+by Schwarz lemma, $|h(\alpha)| \leq 1$\\
+因此 $|f'(\alpha)| \leq \frac{1-f(\alpha)}{1-|\alpha|^2}$\\
+
+\section{homotopy theorem}
+if $f(z)$ is analytic in a region $D$ and if two closed curves $\gamma_1$ and $\gamma_2$ in $D$ are homotopic in $D$, then
+\begin{align*}
+    \int_{\gamma_1} f(z) dz = \int_{\gamma_2} f(z) dz 
+\end{align*}
+好像要畫圖才比較好理解，兩條homotopy 就是想像可以用連續函數慢慢拉
+直到第一條curve的形狀變成第二條curve (請想像一條固定端點的繩子被拉成兩種不同樣貌)\\
+因為這兩個東西可以透過簡單的變數變換，所以積分值相等(用分析幾何的想法)\\
+
+Ex1.\\
+證明 在punch plane 中 unit cirle cannot homotopic to a constant curve\\
+
+proof:\\
+首先觀察上就不可能了 ， punch plane 就是 $\mathbb{C} - \{0\}$ 把 0點挖掉的複數空間\\
+我們可以考慮函數 $f(z) = \frac{1}{z}$\\
+因為 $f(z)$ 在 punch plane 內解析\\
+所以我們可以用 homotopy thm 驗證\\
+\begin{align*}
+    \frac{1}{2\pi i} = \int_{C_{unit}} \frac{1}{z} dz \neq \int_{\alpha_0} \frac{1}{z} dz = 0\\
+\end{align*}
+前面是我們的老朋友了\\
+後面是constant curve (constant curve 也就是單個點)積分當然是0\\
+橡皮筋中釘了一個釘子 $\rightarrow$ 橡皮筋無法縮成一個點\\        
+
+\section{Cauchy closed curve theorem}
+if $f(z)$ is analytic in a region $D$ and if $\gamma$ is a smooth closed curve in $D$, then
+\begin{align*}
+    \int_{\gamma} f(z) dz = 0
+\end{align*}
+讓複變 變輕鬆的定理之一 閉環積一圈等於0 \\
+(內部必須無奇點 奇點的話就要用residue thm那等等再講)\\
+那你就可以計算一些以前積分積不出來的東西 透過構造多個閉環疊加\\
+堆出你想要的積分區域(讓數學變畫圖遊戲)\\
+
+proof:\\
+我們前面提到 analytic function 可等價於 power series\\
+所以簡單的一次積分是可以積上去的\\
+那積一圈就會變成簡單的 $F(\gamma(0))-F(\gamma(1))$ \\
+起終同點 即 $\gamma(0)=\gamma(1)$ 所以\\
+$$\int_{C} f(z) dz = 0$$
+
+\section{Laurent expansion}
+if $f(z)$ is analytic in the annulus $r<R<|z-z_0|<R_2$, then $f(z)$ can be represented by a convergent power series of the form
+\begin{align*}
+    f(z) = \sum_{n=0}^{\infty} a_{n}(z-z_0)^{n} + \sum_{n=1}^{\infty} b_{n}(z-z_0)^{-n}
+\end{align*}
+
+這樣講可能不好理解，他其實就是強行進行Taylor展開\\
+由於整個函數 有部分無法對某特定點微分\\
+即 對於a點展開時 由於函數內部擁有 $\frac{1}{(z-a)^n}$ 這樣因式 所以無法展開\\ 
+所以我們就把函數分成兩個部分\\
+\begin{align*}
+    \text{(原函式)} 
+    &= \text{(principal part（不可解析）)} \times \text{(analytic part（可解析）)} \\
+    &= \text{(principal part（不可解析）)} \times \text{(analytic part (Taylor 展開式))} \\
+    &= \text{(Laurent 展開式)}\\
+\end{align*}
+
+\section{Cauchy residue theorem}
+if $f(z)$ is analytic in a region $D$ except for a finite number of singular points and if $\gamma$ is a closed curve in $D$ which does not pass through any of these singular points but which encloses all of them, then
 
 \end{document}
