@@ -52,6 +52,14 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/indentfirst.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/indentfirst.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/texlive/2025/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2025/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
 INPUT ./repos.aux
 INPUT ./repos.aux
 INPUT repos.aux

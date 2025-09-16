@@ -3,6 +3,7 @@
 \usepackage{xeCJK}
 \usepackage{amssymb}
 \usepackage{indentfirst}
+\usepackage{geometry}
 \setCJKmainfont{標楷體}
 
 \title{Complex Analysis}
@@ -291,6 +292,59 @@ if $f(z)$ is analytic in the annulus $r<R<|z-z_0|<R_2$, then $f(z)$ can be repre
 \end{align*}
 
 \section{Cauchy residue theorem}
-if $f(z)$ is analytic in a region $D$ except for a finite number of singular points and if $\gamma$ is a closed curve in $D$ which does not pass through any of these singular points but which encloses all of them, then
+Suppose \( f \) is analytic in a simply connected domain \( D \) except for isolated singularities at 
+
+
+\[
+z_1, z_2, \dots, z_m.
+\]
+
+
+Let \( \gamma \) be a closed curve not intersecting any of the singularities. Then
+
+
+\[
+\int_{\gamma} f(z)\,dz = 2\pi i \sum_{k=1}^{m} n(\gamma, z_k) \operatorname{Res}(f; z_k),
+\]
+
+
+where \( n(\gamma, z_k) \) denotes the winding number of the curve \( \gamma \) around the point \( z_k \), and \( \operatorname{Res}(f; z_k) \) is the residue of \( f \) at \( z_k \).
+
+簡單來說 對於閉環中有奇點的積分 = $2\pi i$乘上所有奇點的residue和\\
+(這個定理可以說是複變中最強大的定理了，因為他可以把你積不出來的東西變成一個個residue相加)\\
+
+proof:\\
+對於每個奇點 我們生成一個小閉環 $C_k$ 包住奇點 $z_k$\\
+由於閉環的特性 我們可以把原本的閉環積分拆成多個閉環積分相加(closed curve integration theorem)\\
+(請好好畫出那些環 再用拓譜的形式 一個一個拉到相互抵消掉 你就會看懂了)\\
+如果用畫面來想的話 就是在閉環內數個點 開始長泡泡 泡泡貼泡泡會併成一個大泡泡\\
+由於每個泡泡都是順時針方向(你開心也是可以全部改逆時針) 所以接觸的共線段方向相反 會抵消\\
+只留下大泡泡的部分\\
+
+至於為什麼是 $2\pi i$ 呢？\\
+回到我們的老朋友 Cauchy integral formula\\
+\begin{align*}
+    \int_{C_{p}} \frac{d_z}{z-a} = \int_{0}^{2\pi} \frac{ire^{i\theta}}{re^{i\theta}}  d\theta = 2\pi i \\
+\end{align*}
+對於繞著不可解析點的閉環積分 積出來就是 $2\pi i$ (重根記得算兩個)\\
+
+\section{log function}
+The complex logarithm is a multi-valued function defined as follows:
+\[
+\log(z) = \ln|z| + i\arg(z) + 2\pi i k, \quad k \in \mathbb{Z}
+\]
+log function 在複數空間中是多值的，因為arg function本來就是多值的\\
+我們回頭去想 log 的反函數 $e^{z}$\\
+$e^{i\theta}$ 函數可以把整個實數域 壓到$[0, 2\pi)$\\
+那反過來 我們會把 $[0, 2\pi)$ 送回整個實數域\\
+他會有點像螺旋洋芋片那樣 一圈一圈的往上升\\
+所以我們會需要一個branch cut 來把他切開\\
+
+所以我們定義了兩個東西 \\
+\begin{itemize}
+    \item 0 旁邊絕對不要靠近，是一對無限多
+    \item branch cut 每次都從 $-\pi$ 到 $\pi$
+\end{itemize}
+總而言之，在使用log function時，請務必注意所選擇的branch cut(Codomain).\\
 
 \end{document}
