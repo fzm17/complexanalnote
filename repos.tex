@@ -104,19 +104,60 @@ if $f(z)$ is continuous on a curve $\gamma$ with length $L$, and if $|f(z)| \leq
 \end{enumerate}
 所以解析函數 == 無限可微函數 = power series (複數空間的微分超強特性)
 
-\section{}
+\section{Cauchy integral formula}
+if $f(z)$ is analytic inside and on a simple closed circle $C=R e^{i\theta}$ 半徑$R$的封閉圓圈, then
+\begin{align*}
+    f(a) = \frac{1}{2\pi i} \int_{\gamma} \frac{f(z)}{z-a} dz \\    
+\end{align*}
+\begin{flushleft}
+proof:\\
+by closed curve integral thm
+\begin{align*}
+    \int_{C}\frac{f(z)-f(a)}{z-a} dz = 0 \\
+\end{align*}
+thus
+\begin{align*}
+    \int_{C} \frac{f(z)}{z-a} dz - \int_{C} \frac{f(a)}{z-a} dz = 0\\
+\end{align*}
+let $z-a = re^{i\theta}$, $dz = ire^{i\theta} d\theta$, $C_{p}$是圓心$a$的圓 半徑為$p$的圓\\
+where $0 < p < r$\\
+then
+\begin{align*}
+    \int_{C_{p}} \frac{d_z}{z-a} = \int_{0}^{2\pi} \frac{ire^{i\theta}}{re^{i\theta}}  d\theta = 2\pi i \\
+\end{align*}
+所以我們帶入上面的結果\\
+\begin{align*}
+    \int_{C} \frac{f(a)}{z-a} dz &= f(a) \int_{0}^{2\pi} \frac{1}{re^{i\theta}} ire^{i\theta} d\theta \\
+    &= f(a) \int_{0}^{2\pi} i d\theta \\
+    &= 2\pi if(a) \\
+\end{align*}
+\end{flushleft}
+
+
+\section{liouville's theorem}
+如果$f(z)$在整個複數平面上解析且有界，則$f(z)$為常數函數。\\
+*entire + bounded $\Rightarrow$ 常數函數\\
+proof:\\
+假設$|f(z)| \leq M$，則對任意$z_0 \in \mathbb{C}$, $f(z)$在$z_0$的power series展開為
+\begin{align*}
+    f(z) = \sum_{n=0}^{\infty} c_{n}(z-z_0)^{n} \\  
+\end{align*}
+其中
+\begin{align*}
+    c_{n} = \frac{f^{(n)}(z_0)}{n!} = \frac{1}{2\pi i} \int_{|z-z_0|=r} \frac{f(z)}{(z-z_0)^{n+1}} dz \\
+\end{align*}
+由M-L公式可知
+\begin{align*}
+    |c_{n}| \leq \frac{M}{r^{n}} \\
+\end{align*}
+因為$r$可任意大，所以$c_{n} = 0$對所有$n \geq 1$，所以$f(z) = c_0$為常數函數。\\
 
 % \section{Cauchy-Goursat theorem}
 % if $f(z)$ is analytic on and inside a simple closed curve $\gamma$, then
 % \begin{align*}
 %     \int_{\gamma} f(z) dz = 0 \\
 % \end{align*}
-% \section{Cauchy integral formula}
-% if $f(z)$ is analytic inside and on a simple closed curve $\gamma$, and if
-% $z_0$ is any point inside $\gamma$, then
-% \begin{align*}
-%     f(z_0) = \frac{1}{2\pi i} \int_{\gamma} \frac{f(z)}{z-z_0} dz \\    
-% \end{align*}
+
 
 
 \end{document}
